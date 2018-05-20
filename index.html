@@ -9,6 +9,8 @@
     <style>
         body{
             margin: 10% 4% 4% 4%;
+            background-image: url("acqua.jpg");/*change5*/
+            
         }
         .userContainer{
             display: flex;
@@ -17,14 +19,20 @@
             justify-content: center;
         }
         .invoiceContainer{
+            background-color: aquamarine; /*change 2*/
+            padding-bottom: 70px;/*change 3*/
             margin-top: 4em;
+            color: darkblue;/*change 6*/
+            border: 5px solid darkblue;/*change 7*/
             display: flex;
             flex-wrap: wrap;
+           
             width:100%;
             height: auto;
         }
         .userProfile{
             border: 1px solid black;
+             background-color: aqua; /*change 1 */
             display: flex;
             width: 60%;
             height: 100%;
@@ -36,6 +44,7 @@
             width: 40%;
             margin: 8% 0% 8% 3%;
             background-color: #4D6076;
+            border: 10px solid darkblue;/*change4*/
         }
         #infoContainer{
             margin: 5% 2% 2% 2%;
@@ -65,79 +74,138 @@
             left: 25%;
             font-size: 18px;
         }
+
+        .invoiceInvoise{ /*change8*/
+            color: darkblue;
+            text-align: center; /*change9*/
+            display: block;
+            font-size: 50px; /*change10*/
+        }
     </style>
 </head>
 <body>
-     
-    <script>
+
+    <div class="userContainer">
+        <div class="userProfile">
+            <div class="user" id="picContainer">
+                <img src="" alt="">
+            </div>
+            <div class="user" id="infoContainer">
+                Name:
+                <p class="name"></p>
+                Company Name:
+                <p class="companyName"></p>
+                Address:
+                <p class="address"></p>
+                Email:
+                <p class="email"></p>
+            </div>
+        </div>
+    </div>
+     <p class="invoiceInvoise">Invoices</p>
+     <div class="invoiceContainer">
+
+     </div>
+  <script>   
+
         //Fake it til you make it Database
         var user = {
-            name: ,
-            companyName: ,
-            address: ,
-            email: ,
-            picture: 
+            name: "Lisset Torres",
+            companyName: "Acqua Nail",
+            address: "13224 sw 13 st, Miami, FL, 33184",
+            email: "lisset2012@gmail.com",
+            picture: "acqua.jpg"
         }
-
+        
         var invoices = [
             {
                 inv_id: "0156321",
                 companyName: user.companyName,
                 date: "9/7/2017",
-                order: "Dell Computers",
+                order: "OPI",
                 amount: 3,
-                cost: 3457.67,
-                paid: 3457.67
+                cost: 60.67,
+                paid: 60.67
             },
             {
                 inv_id: "0145632",
                 companyName: user.companyName,
                 date: "1/5/2017",
-                order: "HP Printers",
+                order: "DND",
                 amount: 2,
-                cost: 248.00,
-                paid: 150.00
+                cost: 20.00,
+                paid: 15.00
             },
             {
                 inv_id: "0132110",
                 companyName: user.companyName,
                 date: "6/14/2016",
-                order: "Marketing Coffee Mugs",
+                order: "ESSI",
                 amount: 160,
                 cost: 414.00,
                 paid: 414.00
+            },//the three new invoices
+            {
+                inv_id: "0166321",
+                companyName: user.companyName,
+                date: "11/8/2007",
+                order: "PerfectMatch",
+                amount: 3,
+                cost: 45.67,
+                paid:30.67
+            },
+            {
+                inv_id: "0175632",
+                companyName: user.companyName,
+                date: "11/7/2015",
+                order: "Wax GiGi",
+                amount: 2,
+                cost: 30.00,
+                paid: 15.00
+            },
+            {
+                inv_id: "0182110",
+                companyName: user.companyName,
+                date: "4/12/2016",
+                order: "Acetone",
+                amount:30,
+                cost: 414.00,
+                paid: 200.00
             }
         
         ]
 
         
-        //element selectors
-
-        //adding invoices
+        // //element selectors
+            document.querySelector(".name").textContent = user.name
+            document.querySelector(".companyName").textContent = user.companyName
+            document.querySelector(".address").textContent = user.address
+            document.querySelector(".email").textContent = user.email
+            document.querySelector("img").src = user.picture
+        // //adding invoices
         for(var i=0; i<invoices.length; i++){
             document.querySelector('.invoiceContainer').innerHTML += `
             <div class="invoice" id=${invoices[i].inv_id}>
                 Invoice #:   <br/>    
-                <p>${} </p>
+                <p>${invoices[i].inv_id} </p>
                 Company Name:   <br /> 
-                <p>${} </p>
+                <p>${invoices[i].companyName} </p>
                 Date:  <br />
-                <p> ${} </p>
+                <p> ${invoices[i].date} </p>
                 Order:  <br />   
-                <p>${} </p>
+                <p>${invoices[i].order} </p>
                 Amount:   <br />     
-                <p>${} </p>
+                <p>${invoices[i].amount} </p>
                 Cost:       <br />    
-                <p>$${} </p>
+                <p>$${invoices[i].cost} </p>
                 Paid:       <br />   
-                <p> $${} </p>
+                <p> $${invoices[i].paid} </p>
                 Owed:        <br />   
-                <p>$${} </p>
+                <p>$${invoices[i].cost - invoices[i].paid} </p>
             </div>
             `
         }
 
-
-    </script>
+    </script> 
 </body>
 </html>
